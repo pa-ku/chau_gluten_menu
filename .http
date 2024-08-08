@@ -1,0 +1,12 @@
+####
+GET http://localhost:3001/api/menu_items
+
+
+####
+POST http://localhost:3001/api/menu_items
+Content-Type: application/json
+
+body{
+}
+
+####
