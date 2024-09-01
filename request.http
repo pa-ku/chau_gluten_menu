@@ -1,0 +1,29 @@
+#### obtener todos los items
+GET http://localhost:3000/api/items
+
+#### Crear item
+POST http://localhost:3000/api/items
+Content-Type: application/json
+
+{
+    "name":"pablo",
+    "description": "asd",
+    "price":100
+}
+
+
+### Obtener por id
+GET http://localhost:3000/api/items/66ba8acc9bfe51a2d1d484fa
+
+#### Eliminar un item
+DELETE http://localhost:3000/api/items/66ba83169bfe51a2d1d48456
+
+
+#### modificar un item
+PUT http://localhost:3000/api/items/66ba8acc9bfe51a2d1d484fa
+Content-Type: application/json
+
+{
+    "name": "pablo",
+    "descriotion": "el puto amo"
+}
