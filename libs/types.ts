@@ -5,6 +5,12 @@ export type ItemTypes = {
   description: string
   price: number
   image: string
-  createdAt?: Date
   category?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type CategorysTypes = {
+  name: string
+  image: ImageData
 }

@@ -34,7 +34,7 @@ export default function RenderItems({ data }: { data: ItemTypes[] }) {
         }
         placeholder={'Filtrar para editar'}
       />
-      <section className="grid gap-5 lg:grid-cols-2 xl:grid-cols-3">
+      <section className="grid gap-5 lg:grid-cols-2 xl:grid-cols-4">
         {data?.length > 0 ? (
           filteredItems.map(
             ({
@@ -42,9 +42,8 @@ export default function RenderItems({ data }: { data: ItemTypes[] }) {
               name,
               description,
               price,
-              image,
-              createdAt,
               category,
+              createdAt,
               updatedAt,
             }: ItemTypes) => (
               <AdminItem
@@ -53,10 +52,9 @@ export default function RenderItems({ data }: { data: ItemTypes[] }) {
                 description={description}
                 price={price}
                 id={_id}
-                image={image}
+                category={category}
                 createdAt={createdAt}
                 updatedAt={updatedAt}
-                category={category}
               />
             ),
           )

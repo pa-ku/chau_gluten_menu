@@ -1,17 +1,15 @@
 'use client'
 
-import Image from 'next/image'
 import useModal from '@/hooks/useModal'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ItemModal } from './ItemModal'
-import { ItemTypes } from '@/app/types'
+import { ItemTypes } from '@/libs/types'
 
 export function AdminItem({
   name,
   description,
   price,
   id,
-  image,
   category,
   createdAt,
   updatedAt,
@@ -25,8 +23,25 @@ export function AdminItem({
   })
   const [confirmDelete, setConfirmDelete] = useState(false)
 
-  const timeCreated = new Date(createdAt).toLocaleString()
-  const timeUpdated = new Date(updatedAt).toLocaleString()
+  const updated = updatedAt.toLocaleString('es-AR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+  })
+  const created = createdAt.toLocaleString('es-AR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+  })
+
   async function handleChange() {
     try {
       fetch(`/api/items/${id}`, {
@@ -76,31 +91,24 @@ export function AdminItem({
         key={id}
       >
         <div className="w-full">
-          <p className="absolute bottom-1 right-1 text-sm text-gray-400">
-            {timeCreated}
+          <p className="absolute bottom-0 right-1 text-sm text-gray-400">
+            {created}
           </p>
-          <p className="absolute bottom-6 right-1 text-sm text-gray-500">
-            {timeUpdated !== timeCreated && timeUpdated}
+          <p className="absolute bottom-4 right-1 text-sm text-gray-500">
+            {updated !== created && updated}
           </p>
 
-          <figcaption className="flex w-full flex-col">
+          <figcaption className="flex w-full flex-col pb-5">
             <div className="flex justify-between font-semibold">
               <h2>{name}</h2>
               <p>${price}</p>
             </div>
             <p className="text-gray-500">{description}</p>
-            <p className="w-max rounded-md bg-gray-200 px-2">{category}</p>
+            <p className="absolute bottom-0 left-0 w-max rounded-bl-xl bg-gray-200 px-3">
+              {category}
+            </p>
           </figcaption>
         </div>
-        {image && (
-          <Image
-            width={100}
-            height={100}
-            className="rounded-xl"
-            src={image}
-            alt={`Imagen de ${name}`}
-          />
-        )}
       </button>
       <ItemModal
         confirmDelete={confirmDelete}

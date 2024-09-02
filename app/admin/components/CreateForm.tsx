@@ -9,9 +9,6 @@ import imgTest from '@/public/imgtest.webp'
 import React from 'react'
 import { categorys } from '@/libs/categorys'
 
-import { createMany } from '@/libs/actions'
-import { manyData } from '@/libs/manyData'
-
 export default function CreateItem() {
   const formRef = useRef<HTMLFormElement>(null)
 
@@ -23,8 +20,6 @@ export default function CreateItem() {
   return (
     <>
       <div className="flex w-full flex-col items-center justify-center gap-5">
-        <button onClick={() => createMany(manyData)}>Import Many Data</button>
-
         <form
           ref={formRef}
           action={handleAction}
@@ -75,13 +70,6 @@ export default function CreateItem() {
               </svg>
             </CircleButton>
           </div>
-          <Image
-            className="m-auto rounded-xl"
-            width={130}
-            height={130}
-            src={imgTest}
-            alt="Imagen del producto"
-          />
         </form>
       </div>
     </>

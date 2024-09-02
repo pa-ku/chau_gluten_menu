@@ -9,16 +9,13 @@ import { redirect } from 'next/navigation'
 export async function createItem(formData: FormData) {
   try {
     await dbConnect()
-    console.log(formData.get('image'))
     const data = {
       name: formData.get('name'),
       description: formData.get('description'),
       price: parseInt(formData.get('price')),
       category: formData.get('category'),
-      /*   image: formData.get('image'), */
     }
     const dataValidation = itemSchema.parse(data)
-
     const newItem = await new Item(dataValidation)
     const savedUser = await newItem.save()
     console.log('Item guardado correctamente', savedUser)
@@ -32,22 +29,41 @@ export async function createItem(formData: FormData) {
 
 export async function editItem() {}
 
-export async function getItems() {
+export async function getAdminItems() {
   try {
     await dbConnect()
-    const items = await Item.find()
-    return items
-  } catch (err: any) {
-    return err
+    const data = await Item.find().lean()
+    return data
+  } catch (error) {
+    return error
   }
 }
 
-export async function createMany(data) {
+export async function getItems() {
   try {
     await dbConnect()
-    const newData = await Item.insertMany(data)
-    console.log('Data insertada', newData)
-  } catch (error) {
-    console.log(error)
+
+    const group = await Item.aggregate([
+      {
+        $group: {
+          _id: '$category', // Agrupa por categoría
+          items: {
+            $push: {
+              // Empuja los ítems con los campos que querés
+              name: '$name',
+              description: '$description',
+              price: '$price',
+            },
+          },
+        },
+      },
+      {
+        $sort: { _id: 1 }, // Ordena por la categoría (1 para ascendente, -1 para descendente)
+      },
+    ])
+
+    return group
+  } catch (err: any) {
+    return err
   }
 }
