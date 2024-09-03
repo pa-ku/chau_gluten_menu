@@ -37,9 +37,10 @@ export default function RenderItems({ data }: { data: ItemTypes[] }) {
           placeholder={'Filtrar para editar'}
         />
       </header>
-
-      <CreateItem />
-      <section className="grid gap-5 py-20 lg:grid-cols-2 xl:grid-cols-4">
+      <div className='py-16'>
+        <CreateItem />
+      </div>
+      <section className="grid gap-5 lg:grid-cols-2 xl:grid-cols-4">
         {data?.length > 0 ? (
           filteredItems.map(
             ({
