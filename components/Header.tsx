@@ -4,9 +4,9 @@ import logo from '@/public/bar_logo.webp'
 
 export default function Header({ query, setQuery }) {
   return (
-    <header className="relative flex w-full justify-center bg-slate-500 py-4">
+    <header className="bg-secundary-800 relative flex w-full justify-center py-4">
       <Image
-        className="absolute left-10"
+        className="absolute left-10 invert"
         src={logo}
         width={45}
         height={35}
@@ -23,13 +23,16 @@ export default function Header({ query, setQuery }) {
       ></SearchBar>
 
       <label className="relative flex cursor-pointer items-center justify-center font-bold">
-        <input type="checkbox" className="peer appearance-none" />
+        <input
+          type="checkbox"
+          className="peer appearance-none stroke-primary"
+        />
         <svg
           width="30"
           height="30"
           viewBox="0 0 24 24"
           strokeWidth="1.5"
-          stroke="#ffffff"
+          stroke="var(--primary)"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -41,10 +44,14 @@ export default function Header({ query, setQuery }) {
           <path d="M12 20l4 -9l4 9" />
           <path d="M19.1 18h-6.2" />
         </svg>
-        <p className="text-white">Español</p>
-        <div className="absolute top-10 z-10 hidden w-full flex-col rounded-md bg-gray-100 text-black shadow-xl peer-hover:flex">
-          <button className="rounded-md p-2 hover:bg-green-200">Español</button>
-          <button className="rounded-md p-2 hover:bg-green-200">Ingles</button>
+        <p className="text-primary">Español</p>
+        <div className="bg-secundary-500 text-primary-500 absolute w-32 top-10 z-10 hidden  flex-col rounded-md shadow-xl peer-hover:flex">
+          <button className="rounded-md p-2 hover:bg-primary hover:text-secundary">
+            Español
+          </button>
+          <button className="rounded-md p-2 hover:bg-primary hover:text-secundary">
+            Ingles
+          </button>
         </div>
       </label>
     </header>

@@ -64,7 +64,7 @@ export default function RenderItems({ data }: { data: ItemTypes }) {
         <main className="space-y-10 py-10">
           {updatedData.map(({ _id: category, items }) => (
             <div key={category}>
-              <h1 className="text-4xl">{category}</h1>
+              <h1 className="text-primary-500 text-4xl">{category}</h1>
               <div className="grid lg:grid-cols-4">
                 {items.map((item) => (
                   <ItemTemplate

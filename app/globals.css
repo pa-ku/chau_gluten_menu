@@ -15,6 +15,26 @@ body {
 }
 
 :root {
-  --primary: #44ff53;
-  --secundary: #61ff6e;
+  --primary: #4f827c;
+  --primary-100: #aacbc7;
+  --primary-200: #90bbb6;
+  --primary-300: #77aca6;
+  --primary-400: #5f9b94;
+  --primary-500: #4f827c;
+  --primary-600: #406864;
+  --primary-700: #304f4b;
+  --primary-800: #213633;
+  --primary-900: #111c1b;
+
+  --secundary: #f8ecec;
+  --secundary-100: #ffffff;
+  --secundary-200: #ffffff;
+  --secundary-300: #fdfdfc;
+  --secundary-400: #f7f6f3;
+  --secundary-500: #f1f0ea;
+  --secundary-600: #eae9e1;
+  --secundary-700: #e4e2d8;
+  --secundary-800: #dedcce;
+  --secundary-900: #d8d5c5;
+  --secundary-1000: #d2cebc;
 }

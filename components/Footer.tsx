@@ -56,7 +56,7 @@ function SocialMedia({ logo, href }: SocialMediaTypes) {
     <>
       <a
         href={href}
-        className="m-2 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full p-2 hover:bg-green-200"
+        className="hover:bg-primary-100 m-2 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full p-2"
         target="_blank"
       >
         {logo}
