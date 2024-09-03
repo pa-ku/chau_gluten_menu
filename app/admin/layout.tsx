@@ -7,10 +7,10 @@ export default function Layout({
   return (
     <>
       <div className="flex">
-        <aside className="fixed hidden h-screen w-48 flex-col gap-5 bg-slate-900 p-3 text-lg text-white lg:flex">
+        <aside className="bg-primary-900 fixed hidden h-screen w-48 flex-col gap-5 p-3 text-lg text-white lg:flex">
           <Link
             href="/"
-            className="flex items-center justify-start gap-2 hover:text-green-200"
+            className="hover:text-primary-100 flex items-center justify-start gap-2"
           >
             <svg
               width="25"
@@ -31,7 +31,7 @@ export default function Layout({
           </Link>
           <Link
             href="/admin"
-            className="flex items-center justify-start gap-2 hover:text-green-200"
+            className="hover:text-primary-100 flex items-center justify-start gap-2"
           >
             <svg
               width="25"
@@ -53,7 +53,7 @@ export default function Layout({
             </svg>
             Aministrar
           </Link>
-          <button className="flex items-center justify-start gap-2 hover:text-green-200">
+          <button className="hover:text-primary-100 flex items-center justify-start gap-2">
             <svg
               width="25"
               height="25"
@@ -72,7 +72,9 @@ export default function Layout({
             LogOut
           </button>
         </aside>
-        <section className="w-full bg-slate-800 lg:ml-48">{children}</section>
+        <section className="bg-secundary-800 w-full lg:ml-48">
+          {children}
+        </section>
       </div>
     </>
   )

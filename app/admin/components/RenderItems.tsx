@@ -27,7 +27,7 @@ export default function RenderItems({ data }: { data: ItemTypes[] }) {
 
   return (
     <>
-      <header className="flex w-full items-center justify-start bg-slate-600 p-2">
+      <header className="bg-secundary-700 flex w-full items-center justify-start p-2">
         <SearchBar
           onClick={() => setQuery('')}
           query={query}
@@ -37,7 +37,7 @@ export default function RenderItems({ data }: { data: ItemTypes[] }) {
           placeholder={'Filtrar para editar'}
         />
       </header>
-      <div className='py-16'>
+      <div className="py-16">
         <CreateItem />
       </div>
       <section className="grid gap-5 lg:grid-cols-2 xl:grid-cols-4">

@@ -21,7 +21,7 @@ export function ItemModal({
     <>
       <dialog
         ref={refModal}
-        className="m-auto w-96 rounded-xl bg-slate-900 p-4"
+        className="bg-primary-600 m-auto w-96 rounded-xl p-4"
       >
         <div className="absolute right-4 z-10 flex flex-row-reverse items-center gap-2">
           <CircleButton onClick={handleConfirm}>
@@ -47,7 +47,7 @@ export function ItemModal({
             <>
               <CircleButton
                 onClick={handleDelete}
-                className="h-8 w-8 cursor-pointer bg-slate-700 text-lg text-white hover:bg-blue-500"
+                className="bg-primary-900 h-8 w-8 cursor-pointer text-lg text-white hover:bg-blue-500"
               >
                 ✓
               </CircleButton>
@@ -63,13 +63,15 @@ export function ItemModal({
           className="text-xl font-bold placeholder:font-bold placeholder:text-gray-400"
           placeholder="Titulo"
         />
-        <InputText
-          type="text"
+
+        <textarea
+          className="bg-primary-500 w-full rounded-xl p-2 text-white placeholder:text-primary-300"
           onChange={handleChangeData}
           value={newData.description}
           name="description"
           placeholder="Descripción"
-        />
+        ></textarea>
+
         <InputText
           type="number"
           onChange={handleChangeData}
@@ -81,7 +83,7 @@ export function ItemModal({
           name="category"
           onChange={handleChangeData}
           id=""
-          className="mx-3 mb-2 rounded-md bg-slate-700 px-2 py-1 text-white"
+          className="bg-primary-900 mx-3 mb-2 rounded-md px-2 py-1 text-white"
         >
           {categorys.map((cat) => (
             <option key={cat.name} value={cat.name}>
@@ -92,12 +94,12 @@ export function ItemModal({
         <div className="grid grid-cols-2 gap-4 p-3">
           <button
             onClick={handleChange}
-            className="rounded-xl bg-gray-700 p-3 font-bold text-white duration-200 hover:brightness-110"
+            className="bg-primary-900 rounded-xl p-3 font-bold text-white duration-200 hover:brightness-110"
           >
             Modificar
           </button>
           <button
-            className="rounded-xl bg-red-400 font-bold text-white duration-200 hover:brightness-110"
+            className="bg-secundary-900 text-primary-900 rounded-xl font-bold duration-200 hover:brightness-110"
             onClick={() => {
               closeModal()
               setConfirmDelete(false)
