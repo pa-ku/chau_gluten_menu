@@ -18,16 +18,3 @@ body {
   --primary: #44ff53;
   --secundary: #61ff6e;
 }
-
-
-::-webkit-scrollbar {
-  background-color: #333;
-  width: 17px;
-}
-::-webkit-scrollbar-thumb {
-  background-color: #aaaaaa;
-  border: 3.2px solid #333;
-}
-::-webkit-scrollbar-thumb:hover {
-  background-color: #777;
-}

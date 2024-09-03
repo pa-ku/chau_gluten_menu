@@ -5,6 +5,17 @@ import { itemSchema } from '../app/api/items/item.schema'
 import Item from '../app/api/items/item.model'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
+import User from '@/app/api/auth/user.model'
+
+export async function getUsers() {
+  try {
+    await dbConnect()
+    const data = await User.find()
+    return data
+  } catch (error) {
+    return { error }
+  }
+}
 
 export async function createItem(formData: FormData) {
   try {

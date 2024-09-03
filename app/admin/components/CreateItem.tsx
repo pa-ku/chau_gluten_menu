@@ -23,7 +23,7 @@ export default function CreateItem() {
         <form
           ref={formRef}
           action={handleAction}
-          className="relative w-80 rounded-xl bg-white py-1"
+          className="relative rounded-md bg-slate-700 py-1 lg:w-80"
         >
           <InputText
             required
@@ -36,7 +36,7 @@ export default function CreateItem() {
           <select
             name="category"
             id=""
-            className="mx-3 mb-2 rounded-md bg-gray-200 px-2 py-1"
+            className="mx-3 mb-2 rounded-md bg-slate-600 px-2 py-1 text-white"
           >
             {categorys.map((cat) => (
               <option key={cat.name} value={cat.name}>
@@ -45,8 +45,10 @@ export default function CreateItem() {
             ))}
           </select>
           <div className="flex gap-3 px-3 py-2">
-            <CircleButton type={'submit'}>+</CircleButton>
-            <CircleButton type="button" className="relative">
+            <CircleButton title="Crear Item" type={'submit'}>
+              +
+            </CircleButton>
+            {/*    <CircleButton type="button" className="relative">
               <label className="absolute h-full w-full cursor-pointer">
                 <input type="file" className="hidden h-full w-full" />
               </label>
@@ -68,7 +70,7 @@ export default function CreateItem() {
                 <path d="M16 19h6" />
                 <path d="M19 16v6" />
               </svg>
-            </CircleButton>
+            </CircleButton> */}
           </div>
         </form>
       </div>

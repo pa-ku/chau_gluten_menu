@@ -16,16 +16,16 @@ export default function Category({
   return (
     <button
       onClick={onClick}
-      className={`${children == categorySelected ? 'scale-105 bg-green-200' : 'bg-gray-200'} shadow- relative flex h-20 w-40 cursor-pointer flex-col items-center justify-start overflow-hidden rounded-md pt-1 font-bold duration-200 hover:shadow-lg`}
+      className={`${children == categorySelected ? 'scale-105 bg-slate-600 text-white' : 'bg-gray-200'} relative flex cursor-pointer items-center justify-center overflow-hidden rounded-xl px-2 py-1 font-bold duration-200 hover:shadow-lg`}
     >
       <p className="">{children}</p>
-      <Image
+      {/*    <Image
         className="absolute -bottom-3"
         width={90}
         height={90}
         src={image}
         alt=""
-      />
+      /> */}
     </button>
   )
 }

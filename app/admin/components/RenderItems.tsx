@@ -3,7 +3,8 @@
 import { useEffect, useState } from 'react'
 import { AdminItem } from './AdminItem'
 import SearchBar from '@/components/ui/SearchBar'
-import { ItemTypes } from '@/app/types'
+import { ItemTypes } from '@/libs/types'
+import CreateItem from './CreateItem'
 export default function RenderItems({ data }: { data: ItemTypes[] }) {
   const [query, setQuery] = useState('')
   const [debouncedQuery, setDebouncedQuery] = useState(query)
@@ -26,15 +27,19 @@ export default function RenderItems({ data }: { data: ItemTypes[] }) {
 
   return (
     <>
-      <SearchBar
-        onClick={() => setQuery('')}
-        query={query}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setQuery(e.target.value)
-        }
-        placeholder={'Filtrar para editar'}
-      />
-      <section className="grid gap-5 lg:grid-cols-2 xl:grid-cols-4">
+      <header className="flex w-full items-center justify-start bg-slate-600 p-2">
+        <SearchBar
+          onClick={() => setQuery('')}
+          query={query}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setQuery(e.target.value)
+          }
+          placeholder={'Filtrar para editar'}
+        />
+      </header>
+
+      <CreateItem />
+      <section className="grid gap-5 py-20 lg:grid-cols-2 xl:grid-cols-4">
         {data?.length > 0 ? (
           filteredItems.map(
             ({

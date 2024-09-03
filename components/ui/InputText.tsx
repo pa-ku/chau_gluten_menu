@@ -25,7 +25,7 @@ export default function InputText({
         type={type}
         placeholder={placeholder}
         name={name}
-        className={`${className} w-full border-none px-4 py-3 text-lg outline-none`}
+        className={`${className} w-full border-none bg-transparent px-4 py-3 text-lg text-white outline-none`}
         required={required}
       />
     </>

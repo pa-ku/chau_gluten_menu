@@ -46,8 +46,8 @@ export default function RenderItems({ data }: { data: ItemTypes }) {
             </CategoryTemplate>
           ))}
         </div>
-        {query !== '' && <h1 className="pt-5 text-4xl">Encontrados</h1>}
-        <div className="grid grid-cols-4 rounded-xl duration-500">
+
+        <div className="grid grid-cols-4 rounded-xl bg-gray-200 duration-500">
           {query !== '' &&
             filteredData
               .slice(0, MAX_ITEMS_SEARCH)
