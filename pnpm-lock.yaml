@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@types/bcryptjs':
-        specifier: ^2.4.6
-        version: 2.4.6
       cryptojs:
         specifier: ^2.5.3
         version: 2.5.3
@@ -39,6 +36,9 @@ importers:
         specifier: ^3.23.8
         version: 3.23.8
     devDependencies:
+      '@types/bcryptjs':
+        specifier: ^2.4.6
+        version: 2.4.6
       '@types/jsonwebtoken':
         specifier: ^9.0.6
         version: 9.0.6
