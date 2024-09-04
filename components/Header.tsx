@@ -9,14 +9,10 @@ type HeaderTypes = {
 
 export default function Header({ query, setQuery }: HeaderTypes) {
   return (
-    <header className="relative flex w-full justify-center bg-secundary-800 py-4">
-      <Image
-        className="absolute left-10 invert"
-        src={logo}
-        width={45}
-        height={35}
-        alt="Logo de la empresa"
-      ></Image>
+    <header className="relative flex w-full justify-center bg-secundary-500 py-4">
+      <h2 className="absolute left-0 text-4xl text-primary-500 lg:left-10">
+        MenuBar
+      </h2>
 
       <SearchBar
         onClick={() => setQuery('')}

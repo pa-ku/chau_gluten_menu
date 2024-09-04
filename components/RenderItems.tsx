@@ -47,7 +47,7 @@ export default function RenderItems({ data }: { data: ItemTypes }) {
           ))}
         </div>
 
-        <div className="grid grid-cols-4 rounded-xl bg-gray-200 duration-500">
+        <div className="bg-secundary-600 grid grid-cols-4 rounded-xl duration-500">
           {query !== '' &&
             filteredData
               .slice(0, MAX_ITEMS_SEARCH)
@@ -64,7 +64,7 @@ export default function RenderItems({ data }: { data: ItemTypes }) {
         <main className="space-y-10 py-10">
           {updatedData.map(({ _id: category, items }) => (
             <div key={category}>
-              <h1 className="text-primary-500 text-4xl">{category}</h1>
+              <h1 className="text-4xl text-primary-500">{category}</h1>
               <div className="grid lg:grid-cols-4">
                 {items.map((item) => (
                   <ItemTemplate

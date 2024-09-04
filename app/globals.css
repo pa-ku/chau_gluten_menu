@@ -6,7 +6,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   margin: 0;
 }
 
@@ -16,6 +16,7 @@ body {
 
 :root {
   --primary: #4f827c;
+  --primary-50: #c4dfdc;
   --primary-100: #aacbc7;
   --primary-200: #90bbb6;
   --primary-300: #77aca6;
