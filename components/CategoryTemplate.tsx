@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import { StaticImageData } from 'next/image'
 
 type CategoryTypes = {
   children: string
@@ -16,7 +16,7 @@ export default function Category({
   return (
     <button
       onClick={onClick}
-      className={`${children == categorySelected ? 'bg-primary-500 scale-105 text-white' : 'bg-primary-100'} relative flex cursor-pointer items-center justify-center overflow-hidden rounded-xl px-2 py-1 font-bold duration-200 hover:shadow-lg`}
+      className={`${children == categorySelected ? 'scale-105 bg-primary-500 text-white' : 'bg-primary-100'} relative flex cursor-pointer items-center justify-center overflow-hidden rounded-xl px-2 py-1 font-bold duration-200 hover:shadow-lg`}
     >
       <p className="">{children}</p>
       {/*    <Image
