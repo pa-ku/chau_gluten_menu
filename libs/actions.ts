@@ -2,10 +2,11 @@
 
 import dbConnect from '@/libs/dbConnect'
 import { itemSchema } from '../app/api/items/item.schema'
-import Item from '../app/api/items/item.model'
+import Item, { itemType } from '../app/api/items/item.model'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import User from '@/app/api/auth/user.model'
+import { ItemTypes } from './types'
 
 export async function getUsers() {
   try {
@@ -17,14 +18,14 @@ export async function getUsers() {
   }
 }
 
-export async function createItem(formData: FormData) {
+export async function createItem(formData: FormData): Promise<void> {
   try {
     await dbConnect()
     const data = {
-      name: formData.get('name'),
-      description: formData.get('description'),
-      price: parseInt(formData.get('price')),
-      category: formData.get('category'),
+      name: formData.get('name') as string,
+      description: formData.get('description') as string,
+      price: parseInt(formData.get('price') as string),
+      category: formData.get('category') as string,
     }
     const dataValidation = itemSchema.parse(data)
     const newItem = await new Item(dataValidation)
@@ -40,11 +41,16 @@ export async function createItem(formData: FormData) {
 
 export async function editItem() {}
 
-export async function getAdminItems() {
+export async function getAdminItems(): Promise<ItemTypes[] | any> {
   try {
     await dbConnect()
     const data = await Item.find().lean()
-    return data
+
+    const formattedData = data.map((item) => ({
+      ...item,
+      _id: item._id.toString(),
+    }))
+    return formattedData
   } catch (error) {
     return error
   }

@@ -1,16 +1,8 @@
-import CreateItem from './components/CreateItem'
-import { getAdminItems, getUsers } from '@/libs/actions'
+import { getAdminItems } from '@/libs/actions'
 import RenderItems from './components/RenderItems'
 
 export default async function Admin() {
-  const users = await getUsers()
-  console.log(users)
-
-  const rawData = await getAdminItems()
-  const data = rawData.map((item) => ({
-    ...item,
-    _id: item._id.toString(),
-  }))
+  const data = await getAdminItems()
 
   return (
     <>
