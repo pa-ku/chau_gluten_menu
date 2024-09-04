@@ -2,9 +2,14 @@ import Image from 'next/image'
 import SearchBar from './ui/SearchBar'
 import logo from '@/public/bar_logo.webp'
 
-export default function Header({ query, setQuery }) {
+type HeaderTypes = {
+  query: string
+  setQuery: (value: string) => void
+}
+
+export default function Header({ query, setQuery }: HeaderTypes) {
   return (
-    <header className="bg-secundary-800 relative flex w-full justify-center py-4">
+    <header className="relative flex w-full justify-center bg-secundary-800 py-4">
       <Image
         className="absolute left-10 invert"
         src={logo}
@@ -45,7 +50,7 @@ export default function Header({ query, setQuery }) {
           <path d="M19.1 18h-6.2" />
         </svg>
         <p className="text-primary">Español</p>
-        <div className="bg-secundary-500 text-primary-500 absolute w-32 top-10 z-10 hidden  flex-col rounded-md shadow-xl peer-hover:flex">
+        <div className="absolute top-10 z-10 hidden w-32 flex-col rounded-md bg-secundary-500 text-primary-500 shadow-xl peer-hover:flex">
           <button className="rounded-md p-2 hover:bg-primary hover:text-secundary">
             Español
           </button>

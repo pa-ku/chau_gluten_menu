@@ -9,7 +9,6 @@ type CategoryTypes = {
 
 export default function Category({
   children,
-  image,
   onClick,
   categorySelected,
 }: CategoryTypes) {
