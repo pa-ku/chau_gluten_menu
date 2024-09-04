@@ -5,7 +5,7 @@ type InputType = {
   required?: boolean
   value?: string | number
   onChange?: any
-  type: 'text' | 'number'
+  type?: 'text' | 'number'
 }
 
 export default function InputText({

@@ -2,8 +2,8 @@ type SearchBar = {
   placeholder: string
   query: string
   onClick?: React.MouseEventHandler<HTMLButtonElement> // Cambiado a función
-  onChange: React.ChangeEventHandler<HTMLInputElement>
-  className: string
+  onChange?: React.ChangeEventHandler<HTMLInputElement>
+  className?: string
 }
 export default function SearchBar({
   placeholder,
@@ -17,7 +17,7 @@ export default function SearchBar({
       <div className="flex h-11 w-full px-2 md:w-80">
         <input
           placeholder={placeholder}
-          className="bg-primary-300 peer w-full rounded-l-xl border-[1px] border-transparent px-3 py-2 text-white shadow-sm outline-none duration-200 placeholder:text-slate-200 focus-within:border-slate-700"
+          className="peer w-full rounded-l-xl border-[1px] border-transparent bg-primary-300 px-3 py-2 text-white shadow-sm outline-none duration-200 placeholder:text-slate-200 focus-within:border-slate-700"
           type="text"
           aria-label="search"
           value={query}
@@ -26,7 +26,7 @@ export default function SearchBar({
           required
         />
         <button
-          className="bg-primary-600 focus-visible:border-primary-600 w-12 rounded-r-xl border-[1px] border-transparent text-primary shadow-sm outline-none"
+          className="w-12 rounded-r-xl border-[1px] border-transparent bg-primary-600 text-primary shadow-sm outline-none focus-visible:border-primary-600"
           aria-label="search"
           onClick={onClick}
         >

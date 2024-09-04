@@ -4,8 +4,8 @@ export type ItemTypes = {
   name: string
   description: string
   price: number
-  image: string
-  category?: string
+  image?: string
+  category: string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
