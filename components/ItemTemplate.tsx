@@ -1,4 +1,4 @@
-import { ItemTypes } from '@/app/types'
+import { ItemTypes } from '@/libs/types'
 import Image from 'next/image'
 
 export default function ItemTemplate({
