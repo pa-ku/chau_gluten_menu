@@ -23,24 +23,28 @@ export function AdminItem({
   })
   const [confirmDelete, setConfirmDelete] = useState(false)
 
-  const updated = updatedAt.toLocaleString('es-AR', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: false,
-  })
-  const created = createdAt.toLocaleString('es-AR', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: false,
-  })
+  const updated =
+    updatedAt &&
+    updatedAt.toLocaleString('es-AR', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false,
+    })
+  const created =
+    createdAt &&
+    createdAt.toLocaleString('es-AR', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false,
+    })
 
   async function handleChange() {
     try {
@@ -87,7 +91,7 @@ export function AdminItem({
     <>
       <button
         onClick={openModal}
-        className="shadow:md bg-secundary-200 relative flex w-80 justify-between rounded-md p-3 text-start shadow-md duration-200 hover:brightness-110"
+        className="shadow:md relative flex w-80 justify-between rounded-md bg-secundary-200 p-3 text-start shadow-md duration-200 hover:brightness-110"
         key={id}
       >
         <div className="w-full">
@@ -99,12 +103,12 @@ export function AdminItem({
           </p>
 
           <figcaption className="flex w-full flex-col pb-5">
-            <div className="text-primary-700 flex justify-between font-semibold">
+            <div className="flex justify-between font-semibold text-primary-700">
               <h2>{name}</h2>
               <p>${price}</p>
             </div>
             <p className="text-primary-400">{description}</p>
-            <p className="bg-primary-600 absolute bottom-0 left-0 w-max rounded-bl-md px-3 text-secundary">
+            <p className="absolute bottom-0 left-0 w-max rounded-bl-md bg-primary-600 px-3 text-secundary">
               {category}
             </p>
           </figcaption>

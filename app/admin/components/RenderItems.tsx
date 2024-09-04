@@ -27,7 +27,7 @@ export default function RenderItems({ data }: { data: ItemTypes[] }) {
 
   return (
     <>
-      <header className="bg-secundary-700 flex w-full items-center justify-start p-2">
+      <header className="flex w-full items-center justify-start bg-secundary-700 p-2">
         <SearchBar
           onClick={() => setQuery('')}
           query={query}

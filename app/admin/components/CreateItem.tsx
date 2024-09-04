@@ -3,9 +3,7 @@
 import InputText from '../../../components/ui/InputText'
 import { createItem } from '@/libs/actions'
 import CircleButton from '../../../components/ui/CircleButton'
-import { useRef, useState } from 'react'
-import Image from 'next/image'
-import imgTest from '@/public/imgtest.webp'
+import { useRef } from 'react'
 import React from 'react'
 import { categorys } from '@/libs/categorys'
 
@@ -23,7 +21,7 @@ export default function CreateItem() {
         <form
           ref={formRef}
           action={handleAction}
-          className="bg-primary-700 relative rounded-md py-1 lg:w-80"
+          className="relative rounded-md bg-primary-700 py-1 lg:w-80"
         >
           <InputText
             required
@@ -32,16 +30,15 @@ export default function CreateItem() {
             placeholder="Titulo"
           />
           <textarea
-            className="bg-primary-500 placeholder:text-primary-300 w-full p-2 text-white"
+            className="w-full bg-primary-500 p-2 text-white placeholder:text-primary-300"
             name="description"
-         
             placeholder="Descripción"
           ></textarea>
           <InputText required name="price" placeholder="Precio" />
           <select
             name="category"
             id=""
-            className="bg-primary-900 mx-3 mb-2 rounded-md px-2 py-1 text-white"
+            className="mx-3 mb-2 rounded-md bg-primary-900 px-2 py-1 text-white"
           >
             {categorys.map((cat) => (
               <option key={cat.name} value={cat.name}>
