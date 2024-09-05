@@ -49,7 +49,7 @@ export default function ItemsLayout({ data }: { data: MenuItemTypes[] }) {
                 name={name}
                 description={description}
                 price={price}
-                id={_id}
+                _id={_id}
                 category={category}
                 createdAt={createdAt}
                 updatedAt={updatedAt}

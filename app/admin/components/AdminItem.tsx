@@ -3,17 +3,17 @@
 import useModal from '@/hooks/useModal'
 import { useEffect, useState } from 'react'
 import { ItemModal } from './ItemModal'
-import { ItemTypes } from '@/libs/types'
+import { MenuItemTypes } from '@/libs/types'
 
 export function AdminItem({
   name,
   description,
   price,
-  id,
+  _id: id,
   category,
   createdAt,
   updatedAt,
-}: ItemTypes) {
+}: MenuItemTypes) {
   const [refModal, openModal, closeModal] = useModal()
   const [newData, setNewData] = useState({
     name: name,

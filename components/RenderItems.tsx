@@ -28,7 +28,7 @@ export default function RenderItems({ data }: { data: ItemsGroupTypes[] }) {
   const sortByCategory = useMemo(
     () =>
       (data: ItemsGroupTypes[], category: string): ItemsGroupTypes[] => {
-        return data.slice().sort((a: { _id: string }, b: { _id: string }) => {
+        return data.slice().sort((a, b) => {
           if (a._id === category) return -1
           if (b._id === category) return 1
           return 0
@@ -43,29 +43,46 @@ export default function RenderItems({ data }: { data: ItemsGroupTypes[] }) {
   )
 
   return (
-    <>
-      <div className="flex h-full w-full flex-col items-center justify-start">
-        <Header query={query} setQuery={setQuery}></Header>
-        <div className="grid grid-cols-2 items-center justify-center gap-2 py-5 lg:grid-cols-6">
-          {categorys.map(({ name, image }) => (
-            <CategoryTemplate
-              key={name}
-              categorySelected={categorySelected}
-              onClick={() =>
-                setCategorySelected(categorySelected === name ? '' : name)
-              }
-              image={image}
-            >
-              {name}
-            </CategoryTemplate>
-          ))}
-        </div>
+    <div className="flex h-full w-full flex-col items-center justify-start">
+      <Header query={query} setQuery={setQuery}></Header>
+      <div className="grid grid-cols-2 items-center justify-center gap-2 py-5 lg:grid-cols-6">
+        {categorys.map(({ name, image }) => (
+          <CategoryTemplate
+            key={name}
+            categorySelected={categorySelected}
+            onClick={() =>
+              setCategorySelected(categorySelected === name ? '' : name)
+            }
+            image={image}
+          >
+            {name}
+          </CategoryTemplate>
+        ))}
+      </div>
 
-        <div className="grid grid-cols-4 rounded-xl bg-secundary-600 duration-500">
-          {query !== '' &&
-            filteredData
-              .slice(0, MAX_ITEMS_SEARCH)
-              .map((item) => (
+      <div className="grid grid-cols-4 rounded-xl bg-secundary-600 duration-500">
+        {query !== '' &&
+          filteredData
+            .slice(0, MAX_ITEMS_SEARCH)
+            .map((item) => (
+              <ItemTemplate
+                key={item.name}
+                price={item.price}
+                name={item.name}
+                description={item.description}
+              />
+            ))}
+      </div>
+
+      <main className="space-y-10 py-10">
+        {updatedData.map(({ _id: category, items }: ItemsGroupTypes) => (
+          <div
+            key={category}
+            className={`${category === 'Principales' ? 'rounded-lg bg-secundary-500' : ''} `}
+          >
+            <h1 className="text-4xl text-primary-500">{category}</h1>
+            <div className="grid lg:grid-cols-4">
+              {items.map((item: ItemTypes) => (
                 <ItemTemplate
                   key={item.name}
                   price={item.price}
@@ -73,29 +90,10 @@ export default function RenderItems({ data }: { data: ItemsGroupTypes[] }) {
                   description={item.description}
                 />
               ))}
-        </div>
-
-        <main className="space-y-10 py-10">
-          {updatedData.map(({ _id: category, items }: ItemsGroupTypes) => (
-            <div
-              key={category}
-              className={`${category == 'Principales' ? 'rounded-lg bg-secundary-500' : ''} `}
-            >
-              <h1 className="text-4xl text-primary-500">{category}</h1>
-              <div className="grid lg:grid-cols-4">
-                {items.map((item: ItemTypes) => (
-                  <ItemTemplate
-                    key={item.name}
-                    price={item.price}
-                    name={item.name}
-                    description={item.description}
-                  />
-                ))}
-              </div>
             </div>
-          ))}
-        </main>
-      </div>
-    </>
+          </div>
+        ))}
+      </main>
+    </div>
   )
 }
