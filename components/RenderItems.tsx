@@ -2,31 +2,54 @@
 
 import CategoryTemplate from '@/components/CategoryTemplate'
 import ItemTemplate from '@/components/ItemTemplate'
-import { ItemTypes } from '@/libs/types'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { categorys } from '@/libs/categorys'
 import Header from './Header'
 
 const MAX_ITEMS_SEARCH = 8
 
-export default function RenderItems({ data }: { data: ItemTypes }) {
+interface RenderItemsTypes {
+  _id: string
+  items: Item[]
+}
+
+interface Item {
+  name: string
+  description: string
+  price: number
+}
+
+export default function RenderItems({ data }: { data: RenderItemsTypes[] }) {
   const [query, setQuery] = useState('')
   const [categorySelected, setCategorySelected] = useState('')
 
-  const items = data.flatMap((item) => item.items)
-  const filteredData = items.filter((item) =>
-    item.name.toLowerCase().includes(query.toLowerCase()),
+  const items = useMemo(
+    () => data.flatMap((category) => category.items),
+    [data],
+  )
+  const filteredData = useMemo(
+    () =>
+      items.filter((item) =>
+        item.name.toLowerCase().includes(query.toLowerCase()),
+      ),
+    [items, query],
   )
 
-  const sortById = (arr, id) => {
-    return arr.slice().sort((a, b) => {
-      if (a._id === id) return -1
-      if (b._id === id) return 1
-      return 0
-    })
-  }
+  const sortById = useMemo(
+    () => (arr: RenderItemsTypes, id: string) => {
+      return arr.slice().sort((a, b) => {
+        if (a._id === id) return -1
+        if (b._id === id) return 1
+        return 0
+      })
+    },
+    [],
+  )
 
-  const updatedData = sortById(data, categorySelected)
+  const updatedData = useMemo(
+    () => sortById(data, categorySelected),
+    [data, categorySelected, sortById],
+  )
 
   return (
     <>
@@ -47,7 +70,7 @@ export default function RenderItems({ data }: { data: ItemTypes }) {
           ))}
         </div>
 
-        <div className="bg-secundary-600 grid grid-cols-4 rounded-xl duration-500">
+        <div className="grid grid-cols-4 rounded-xl bg-secundary-600 duration-500">
           {query !== '' &&
             filteredData
               .slice(0, MAX_ITEMS_SEARCH)
@@ -62,11 +85,14 @@ export default function RenderItems({ data }: { data: ItemTypes }) {
         </div>
 
         <main className="space-y-10 py-10">
-          {updatedData.map(({ _id: category, items }) => (
-            <div key={category}>
+          {updatedData.map(({ _id: category, items }: RenderItemsTypes) => (
+            <div
+              key={category}
+              className={`${category == 'Principales' ? 'rounded-lg bg-secundary-500' : ''} `}
+            >
               <h1 className="text-4xl text-primary-500">{category}</h1>
               <div className="grid lg:grid-cols-4">
-                {items.map((item) => (
+                {items.map((item: Item) => (
                   <ItemTemplate
                     key={item.name}
                     price={item.price}

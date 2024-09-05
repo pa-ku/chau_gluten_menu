@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import SearchBar from './ui/SearchBar'
 import logo from '@/public/bar_logo.webp'
+import Link from 'next/link'
 
 type HeaderTypes = {
   query: string
@@ -10,9 +11,11 @@ type HeaderTypes = {
 export default function Header({ query, setQuery }: HeaderTypes) {
   return (
     <header className="relative flex w-full justify-center bg-secundary-500 py-4">
-      <h2 className="absolute left-0 text-4xl text-primary-500 lg:left-10">
-        MenuBar
-      </h2>
+      <Link href={'/login'}>
+        <h2 className="absolute left-0 text-4xl text-primary-500 lg:left-10">
+          MenuBar
+        </h2>
+      </Link>
 
       <SearchBar
         onClick={() => setQuery('')}

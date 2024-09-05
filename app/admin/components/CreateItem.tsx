@@ -21,12 +21,12 @@ export default function CreateItem() {
         <form
           ref={formRef}
           action={handleAction}
-          className="relative rounded-md bg-primary-700 py-1 lg:w-80"
+          className="relative rounded-md bg-primary-300 py-1 text-primary-800 placeholder:text-primary-200 lg:w-80"
         >
           <InputText
             required
             name="name"
-            className="font-bold placeholder:font-bold placeholder:text-gray-400"
+            className="font-bold placeholder:font-bold placeholder:text-primary-100"
             placeholder="Titulo"
           />
           <textarea
@@ -34,11 +34,16 @@ export default function CreateItem() {
             name="description"
             placeholder="Descripción"
           ></textarea>
-          <InputText required name="price" placeholder="Precio" />
+          <InputText
+            className="placeholder:text-primary-100"
+            required
+            name="price"
+            placeholder="Precio"
+          />
           <select
             name="category"
             id=""
-            className="mx-3 mb-2 rounded-md bg-primary-900 px-2 py-1 text-white"
+            className="mx-3 mb-2 rounded-md bg-primary-600 px-2 py-1 text-white"
           >
             {categorys.map((cat) => (
               <option key={cat.name} value={cat.name}>
@@ -47,7 +52,7 @@ export default function CreateItem() {
             ))}
           </select>
           <div className="flex gap-3 px-3 py-2">
-            <CircleButton title="Crear Item text-primary-700" type={'submit'}>
+            <CircleButton title="Crear Item" className='text-primary-200 bg-primary-600' type={'submit'}>
               +
             </CircleButton>
             {/*    <CircleButton type="button" className="relative">

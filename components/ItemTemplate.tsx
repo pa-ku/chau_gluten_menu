@@ -1,12 +1,14 @@
-import { ItemTypes } from '@/libs/types'
-import Image from 'next/image'
+type ItemTemplateTypes = {
+  name: string
+  description: string
+  price: number
+}
 
 export default function ItemTemplate({
   name,
   description,
   price,
-  image,
-}: ItemTypes) {
+}: ItemTemplateTypes) {
   return (
     <>
       <figure className="relative flex w-80 justify-between rounded-xl p-3 text-start shadow-sm duration-200">
@@ -17,15 +19,6 @@ export default function ItemTemplate({
           </div>
           <p className="text-gray-500">{description}</p>
         </figcaption>
-        {image && (
-          <Image
-            width={100}
-            height={100}
-            className="rounded-xl"
-            src={image}
-            alt={`Imagen de ${name}`}
-          />
-        )}
       </figure>
     </>
   )

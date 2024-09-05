@@ -6,7 +6,8 @@ import Item, { itemType } from '../app/api/items/item.model'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import User from '@/app/api/auth/user.model'
-import { ItemTypes } from './types'
+import { ObjectId } from 'mongoose'
+import { MenuItemTypes } from './types'
 
 export async function getUsers() {
   try {
@@ -30,7 +31,7 @@ export async function createItem(formData: FormData): Promise<void> {
     const dataValidation = itemSchema.parse(data)
     const newItem = await new Item(dataValidation)
     const savedUser = await newItem.save()
-    console.log('Item guardado correctamente', savedUser)
+    console.log('Item guardado correctamente')
   } catch (error) {
     console.log(error)
   } finally {
@@ -41,18 +42,24 @@ export async function createItem(formData: FormData): Promise<void> {
 
 export async function editItem() {}
 
-export async function getAdminItems(): Promise<ItemTypes[] | any> {
+export async function getAdminItems(): Promise<MenuItemTypes[]> {
   try {
     await dbConnect()
     const data = await Item.find().lean()
 
-    const formattedData = data.map((item) => ({
-      ...item,
+    const formattedData: MenuItemTypes[] = data.map((item: any) => ({
       _id: item._id.toString(),
+      name: item.name,
+      description: item.description,
+      price: item.price,
+      category: item.category,
+      createdAt: new Date(item.createdAt),
+      updatedAt: new Date(item.updatedAt),
     }))
     return formattedData
   } catch (error) {
-    return error
+    console.error('Error fetching admin items:', error)
+    throw error
   }
 }
 
@@ -75,12 +82,11 @@ export async function getItems() {
         },
       },
       {
-        $sort: { _id: 1 }, // Ordena por la categoría (1 para ascendente, -1 para descendente)
+        $sort: { _id: 1 },
       },
     ])
-
     return group
-  } catch (err: any) {
-    return err
+  } catch (err) {
+    return { error: 'Hubo un problema al obtener el menu', err }
   }
 }

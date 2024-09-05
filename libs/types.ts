@@ -14,3 +14,13 @@ export type CategorysTypes = {
   name: string
   image: ImageData
 }
+
+export type MenuItemTypes = {
+  _id: string
+  name: string
+  description: string
+  price: number
+  category: string
+  createdAt: Date
+  updatedAt: Date
+}

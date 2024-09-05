@@ -1,28 +1,20 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { AdminItem } from './AdminItem'
 import SearchBar from '@/components/ui/SearchBar'
-import { ItemTypes } from '@/libs/types'
 import CreateItem from './CreateItem'
-export default function RenderItems({ data }: { data: ItemTypes[] }) {
+import { MenuItemTypes } from '@/libs/types'
+
+export default function ItemsLayout({ data }: { data: MenuItemTypes[] }) {
   const [query, setQuery] = useState('')
-  const [debouncedQuery, setDebouncedQuery] = useState(query)
 
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedQuery(query)
-    }, 300)
-
-    return () => {
-      clearTimeout(handler)
-    }
-  }, [query])
-
-  const filteredItems = data.filter(
-    (item) =>
-      item.name.toLowerCase().includes(debouncedQuery.toLowerCase()) ||
-      item.category.toLowerCase().includes(debouncedQuery.toLowerCase()),
+  const filteredData = useMemo(
+    () =>
+      data.filter((item) =>
+        item.name.toLowerCase().includes(query.toLowerCase()),
+      ),
+    [data, query],
   )
 
   return (
@@ -42,7 +34,7 @@ export default function RenderItems({ data }: { data: ItemTypes[] }) {
       </div>
       <section className="grid gap-5 lg:grid-cols-2 xl:grid-cols-4">
         {data?.length > 0 ? (
-          filteredItems.map(
+          filteredData.map(
             ({
               _id,
               name,
@@ -51,7 +43,7 @@ export default function RenderItems({ data }: { data: ItemTypes[] }) {
               category,
               createdAt,
               updatedAt,
-            }: ItemTypes) => (
+            }: MenuItemTypes) => (
               <AdminItem
                 key={_id}
                 name={name}
