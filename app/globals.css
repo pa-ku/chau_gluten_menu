@@ -39,3 +39,17 @@ body {
   --secundary-900: #d8d5c5;
   --secundary-1000: #d2cebc;
 }
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  background-color: #ffffff;
+  width: 15px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary-500);
+  border-radius: 10px;
+  border: 1px solid #fff;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #777;
+}

@@ -2,7 +2,6 @@
 
 import InputText from '../../../components/ui/InputText'
 import { createItem } from '@/libs/actions'
-import CircleButton from '../../../components/ui/CircleButton'
 import { useRef } from 'react'
 import React from 'react'
 import { categorys } from '@/libs/categorys'
@@ -21,29 +20,31 @@ export default function CreateItem() {
         <form
           ref={formRef}
           action={handleAction}
-          className="relative rounded-md bg-primary-300 py-1 text-primary-800 placeholder:text-primary-200 lg:w-80"
+          className="relative space-y-3 rounded-md bg-primary-700 px-5 py-4 text-primary-800 placeholder:text-primary-200 lg:w-96"
         >
+          <h2 className="text-2xl text-white">Crear Item</h2>
           <InputText
             required
             name="name"
-            className="font-bold placeholder:font-bold placeholder:text-primary-100"
+            className="rounded-lg bg-primary-500 placeholder:text-primary-100"
             placeholder="Titulo"
           />
-          <textarea
-            className="w-full bg-primary-500 p-2 text-white placeholder:text-primary-300"
-            name="description"
-            placeholder="Descripción"
-          ></textarea>
+
           <InputText
-            className="placeholder:text-primary-100"
+            className="rounded-lg bg-primary-500 placeholder:text-primary-100"
             required
             name="price"
             placeholder="Precio"
           />
+          <textarea
+            className="w-full rounded-lg bg-primary-500 p-3 text-white placeholder:text-primary-300"
+            name="description"
+            placeholder="Descripción"
+          ></textarea>
           <select
             name="category"
             id=""
-            className="mx-3 mb-2 rounded-md bg-primary-600 px-2 py-1 text-white"
+            className="rounded-md bg-primary-600 px-2 py-3 text-white"
           >
             {categorys.map((cat) => (
               <option key={cat.name} value={cat.name}>
@@ -51,33 +52,13 @@ export default function CreateItem() {
               </option>
             ))}
           </select>
-          <div className="flex gap-3 px-3 py-2">
-            <CircleButton title="Crear Item" className='text-primary-200 bg-primary-600' type={'submit'}>
-              +
-            </CircleButton>
-            {/*    <CircleButton type="button" className="relative">
-              <label className="absolute h-full w-full cursor-pointer">
-                <input type="file" className="hidden h-full w-full" />
-              </label>
-              <svg
-                width="25"
-                height="25"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="black"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M15 8h.01" />
-                <path d="M12.5 21h-6.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v6.5" />
-                <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l4 4" />
-                <path d="M14 14l1 -1c.67 -.644 1.45 -.824 2.182 -.54" />
-                <path d="M16 19h6" />
-                <path d="M19 16v6" />
-              </svg>
-            </CircleButton> */}
+          <div className="">
+            <button
+              type={'submit'}
+              className="w-full rounded-lg bg-secundary-600 px-3 py-2 font-bold text-primary-700 hover:bg-primary-100"
+            >
+              + Crear
+            </button>
           </div>
         </form>
       </div>
