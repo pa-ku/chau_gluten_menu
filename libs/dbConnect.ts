@@ -3,7 +3,7 @@ declare global {
   var mongoose: any // This must be a `var` and not a `let / const`
 }
 
-const MONGODB_URI = process.env.MONGO_URI
+const MONGODB_URI: any = process.env.MONGO_URI
 
 if (!MONGODB_URI) {
   throw new Error('Falta la variable de entorno de mongoDb')
