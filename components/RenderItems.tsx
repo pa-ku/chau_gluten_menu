@@ -25,20 +25,21 @@ export default function RenderItems({ data }: { data: ItemsGroupTypes[] }) {
     [items, query],
   )
 
-  const sortById = useMemo(
-    () => (arr: ItemsGroupTypes, id: string) => {
-      return arr.slice().sort((a: { _id: string }, b: { _id: string }) => {
-        if (a._id === id) return -1
-        if (b._id === id) return 1
-        return 0
-      })
-    },
+  const sortByCategory = useMemo(
+    () =>
+      (data: ItemsGroupTypes[], category: string): ItemsGroupTypes[] => {
+        return data.slice().sort((a: { _id: string }, b: { _id: string }) => {
+          if (a._id === category) return -1
+          if (b._id === category) return 1
+          return 0
+        })
+      },
     [],
   )
 
   const updatedData = useMemo(
-    () => sortById(data, categorySelected),
-    [data, categorySelected, sortById],
+    () => sortByCategory(data, categorySelected),
+    [data, categorySelected, sortByCategory],
   )
 
   return (
