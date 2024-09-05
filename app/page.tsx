@@ -1,9 +1,10 @@
 import Footer from '@/components/Footer'
 import RenderItems from '@/components/RenderItems'
 import { getItems } from '@/libs/actions'
+import { ItemsGroupTypes } from '@/libs/types'
 
 export default async function Home() {
-  const data = await getItems()
+  const data: ItemsGroupTypes[] = await getItems()
 
   return (
     <>

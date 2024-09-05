@@ -5,21 +5,11 @@ import ItemTemplate from '@/components/ItemTemplate'
 import { useMemo, useState } from 'react'
 import { categorys } from '@/libs/categorys'
 import Header from './Header'
+import { ItemsGroupTypes, ItemTypes } from '@/libs/types'
 
 const MAX_ITEMS_SEARCH = 8
 
-interface RenderItemsTypes {
-  _id: string
-  items: Item[]
-}
-
-interface Item {
-  name: string
-  description: string
-  price: number
-}
-
-export default function RenderItems({ data }: { data: RenderItemsTypes[] }) {
+export default function RenderItems({ data }: { data: ItemsGroupTypes[] }) {
   const [query, setQuery] = useState('')
   const [categorySelected, setCategorySelected] = useState('')
 
@@ -36,8 +26,8 @@ export default function RenderItems({ data }: { data: RenderItemsTypes[] }) {
   )
 
   const sortById = useMemo(
-    () => (arr: RenderItemsTypes, id: string) => {
-      return arr.slice().sort((a, b) => {
+    () => (arr: ItemsGroupTypes, id: string) => {
+      return arr.slice().sort((a: { _id: string }, b: { _id: string }) => {
         if (a._id === id) return -1
         if (b._id === id) return 1
         return 0
@@ -85,14 +75,14 @@ export default function RenderItems({ data }: { data: RenderItemsTypes[] }) {
         </div>
 
         <main className="space-y-10 py-10">
-          {updatedData.map(({ _id: category, items }: RenderItemsTypes) => (
+          {updatedData.map(({ _id: category, items }: ItemsGroupTypes) => (
             <div
               key={category}
               className={`${category == 'Principales' ? 'rounded-lg bg-secundary-500' : ''} `}
             >
               <h1 className="text-4xl text-primary-500">{category}</h1>
               <div className="grid lg:grid-cols-4">
-                {items.map((item: Item) => (
+                {items.map((item: ItemTypes) => (
                   <ItemTemplate
                     key={item.name}
                     price={item.price}

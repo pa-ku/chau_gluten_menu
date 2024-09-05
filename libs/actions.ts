@@ -2,12 +2,12 @@
 
 import dbConnect from '@/libs/dbConnect'
 import { itemSchema } from '../app/api/items/item.schema'
-import Item, { itemType } from '../app/api/items/item.model'
+import Item from '../app/api/items/item.model'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import User from '@/app/api/auth/user.model'
-import { ObjectId } from 'mongoose'
-import { MenuItemTypes } from './types'
+
+import { ItemsGroupTypes, MenuItemTypes } from './types'
 
 export async function getUsers() {
   try {
@@ -46,7 +46,6 @@ export async function getAdminItems(): Promise<MenuItemTypes[]> {
   try {
     await dbConnect()
     const data = await Item.find().lean()
-
     const formattedData: MenuItemTypes[] = data.map((item: any) => ({
       _id: item._id.toString(),
       name: item.name,
@@ -58,22 +57,20 @@ export async function getAdminItems(): Promise<MenuItemTypes[]> {
     }))
     return formattedData
   } catch (error) {
-    console.error('Error fetching admin items:', error)
-    throw error
+    throw new Error('Hubo un problema al obtener el menu')
   }
 }
 
-export async function getItems() {
+export async function getItems(): Promise<ItemsGroupTypes[]> {
   try {
     await dbConnect()
 
-    const group = await Item.aggregate([
+    const data: ItemsGroupTypes[] = await Item.aggregate([
       {
         $group: {
-          _id: '$category', // Agrupa por categoría
+          _id: '$category',
           items: {
             $push: {
-              // Empuja los ítems con los campos que querés
               name: '$name',
               description: '$description',
               price: '$price',
@@ -85,8 +82,8 @@ export async function getItems() {
         $sort: { _id: 1 },
       },
     ])
-    return group
+    return data
   } catch (err) {
-    return { error: 'Hubo un problema al obtener el menu', err }
+    throw new Error('Hubo un problema al obtener el menu')
   }
 }
