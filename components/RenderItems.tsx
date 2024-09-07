@@ -45,7 +45,7 @@ export default function RenderItems({ data }: { data: ItemsGroupTypes[] }) {
   return (
     <div className="flex h-full w-full flex-col items-center justify-start">
       <Header query={query} setQuery={setQuery}></Header>
-      <div className="grid grid-cols-2 items-center justify-center gap-2 py-5 lg:grid-cols-6">
+      <div className="grid grid-cols-2 items-center justify-center gap-2 py-5 lg:grid-cols-5">
         {categorys.map(({ name, image }) => (
           <CategoryTemplate
             key={name}

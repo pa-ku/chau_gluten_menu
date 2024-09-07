@@ -91,7 +91,7 @@ export function AdminItem({
     <>
       <button
         onClick={openModal}
-        className="shadow:md relative flex w-80 justify-between rounded-md bg-secundary-600 p-3 text-start shadow-md duration-200 hover:text-white"
+        className="shadow:md group relative flex w-80 justify-between rounded-md bg-secundary-600 p-3 text-start shadow-md duration-200 hover:text-white"
         key={id}
       >
         <div className="w-full">
@@ -103,12 +103,12 @@ export function AdminItem({
           </p>
 
           <figcaption className="flex w-full flex-col pb-5">
-            <div className="flex justify-between font-semibold text-primary-700">
+            <div className="group-hover:text-primary-500 flex justify-between font-semibold text-primary-700">
               <h2>{name}</h2>
               <p>${price}</p>
             </div>
             <p className="text-primary-400">{description}</p>
-            <p className="absolute bottom-0 left-0 w-max rounded-bl-md bg-primary-600 px-3 text-secundary">
+            <p className="absolute bottom-0 left-0 w-max rounded-bl-md group-hover:bg-primary-500 bg-primary-600 px-3 text-secundary">
               {category}
             </p>
           </figcaption>

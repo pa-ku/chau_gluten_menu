@@ -18,7 +18,7 @@ export default function CircleButton({
       type={type}
       onClick={onClick}
       title={title}
-      className={`${className} bg-primary-200 flex h-10 w-10 items-center justify-center rounded-full text-2xl duration-200 hover:brightness-105`}
+      className={`${className} flex h-10 w-10 items-center justify-center rounded-full text-2xl duration-200 hover:bg-primary-900`}
     >
       {children}
     </button>

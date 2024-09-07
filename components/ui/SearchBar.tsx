@@ -14,7 +14,7 @@ export default function SearchBar({
 }: SearchBar) {
   return (
     <>
-      <div className="flex h-11 w-full px-2 md:w-80">
+      <div className="flex h-11 w-full px-2 md:w-96">
         <input
           placeholder={placeholder}
           className="placeholder:text-secundary-1000 peer w-full rounded-l-xl border-[1px] border-transparent bg-secundary-300 px-3 py-2 font-medium text-black shadow-sm outline-none duration-200 focus-within:border-secundary-500"

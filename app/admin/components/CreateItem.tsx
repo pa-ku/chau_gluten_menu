@@ -20,7 +20,7 @@ export default function CreateItem() {
         <form
           ref={formRef}
           action={handleAction}
-          className="relative space-y-3 rounded-md bg-primary-700 px-5 py-4 text-primary-800 placeholder:text-primary-200 lg:w-96"
+          className="relative space-y-3 rounded-md bg-primary-700 p-5 text-primary-800 placeholder:text-primary-200 lg:w-96"
         >
           <h2 className="text-2xl text-white">Crear Item</h2>
           <InputText
@@ -37,21 +37,24 @@ export default function CreateItem() {
             placeholder="Precio"
           />
           <textarea
-            className="w-full rounded-lg bg-primary-500 p-3 text-white placeholder:text-primary-300"
+            className="min-h-32 w-full rounded-lg bg-primary-500 p-3 text-white placeholder:text-primary-300"
             name="description"
             placeholder="Descripción"
           ></textarea>
-          <select
-            name="category"
-            id=""
-            className="rounded-md bg-primary-600 px-2 py-3 text-white"
-          >
-            {categorys.map((cat) => (
-              <option key={cat.name} value={cat.name}>
-                {cat.name}
-              </option>
-            ))}
-          </select>
+          <div className="space-y-1">
+            <p className="text-white">Categoria</p>
+            <select
+              name="category"
+              id=""
+              className="cursor-pointer rounded-md bg-primary-900 px-2 py-3 text-white"
+            >
+              {categorys.map((cat) => (
+                <option key={cat.name} value={cat.name}>
+                  {cat.name}
+                </option>
+              ))}
+            </select>
+          </div>
           <div className="">
             <button
               type={'submit'}
