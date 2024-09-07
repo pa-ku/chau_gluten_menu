@@ -91,7 +91,7 @@ export function AdminItem({
     <>
       <button
         onClick={openModal}
-        className="shadow:md relative flex w-80 justify-between rounded-md bg-secundary-200 p-3 text-start shadow-md duration-200 hover:brightness-110"
+        className="shadow:md relative flex w-80 justify-between rounded-md bg-secundary-600 p-3 text-start shadow-md duration-200 hover:text-white"
         key={id}
       >
         <div className="w-full">

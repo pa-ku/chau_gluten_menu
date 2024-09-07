@@ -45,7 +45,7 @@ export function ItemModal({
       >
         <div className="space-y-3">
           <div className="flex items-center justify-between gap-5">
-            <h2 className="text-2xl text-white">Crear Item</h2>
+            <h2 className="text-2xl text-white">Modificar Item</h2>
             <div className='flex flex-row-reverse items-center gap-2'>
               <CircleButton onClick={handleConfirm}>
                 <svg
@@ -97,7 +97,7 @@ export function ItemModal({
             placeholder="Precio"
           />
           <textarea
-            className="w-full rounded-lg bg-primary-500 p-3 text-white placeholder:text-primary-300"
+            className="w-full rounded-lg min-h-32 bg-primary-500 p-3 text-white placeholder:text-primary-300"
             onChange={handleChangeData}
             value={newData.description}
             name="description"

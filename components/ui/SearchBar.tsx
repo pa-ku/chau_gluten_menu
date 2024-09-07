@@ -17,7 +17,7 @@ export default function SearchBar({
       <div className="flex h-11 w-full px-2 md:w-80">
         <input
           placeholder={placeholder}
-          className="peer w-full rounded-l-xl border-[1px] border-transparent bg-primary-50 px-3 py-2 font-medium text-primary-900 shadow-sm outline-none duration-200 placeholder:text-primary-400 focus-within:border-primary-500"
+          className="placeholder:text-secundary-1000 peer w-full rounded-l-xl border-[1px] border-transparent bg-secundary-300 px-3 py-2 font-medium text-black shadow-sm outline-none duration-200 focus-within:border-secundary-500"
           type="text"
           aria-label="search"
           value={query}

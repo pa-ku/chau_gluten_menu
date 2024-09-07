@@ -19,7 +19,7 @@ export default function ItemsLayout({ data }: { data: MenuItemTypes[] }) {
 
   return (
     <>
-      <header className="flex w-full items-center justify-center bg-primary-600 p-2">
+      <header className="flex w-full items-center justify-center bg-secundary-900 p-2">
         <SearchBar
           onClick={() => setQuery('')}
           query={query}
