@@ -8,7 +8,7 @@ export default async function Admin() {
   return (
     <>
       <div className="flex w-full flex-col items-center justify-center gap-5">
-        <div className="flex w-full flex-col flex-wrap items-center justify-center gap-4">
+        <div className="flex w-full flex-col flex-wrap items-center justify-center gap-4 px-4">
           <ItemsLayout data={itemData} />
         </div>
       </div>

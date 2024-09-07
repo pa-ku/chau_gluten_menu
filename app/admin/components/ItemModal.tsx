@@ -41,7 +41,7 @@ export function ItemModal({
     <>
       <dialog
         ref={refModal}
-        className="m-auto h-max w-96 rounded-xl bg-primary-600 p-4"
+        className="m-auto h-max  lg:w-96 rounded-xl bg-primary-600 p-4"
       >
         <div className="space-y-3">
           <div className="flex items-center justify-between gap-5">

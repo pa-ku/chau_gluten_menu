@@ -20,7 +20,7 @@ export default function ItemsLayout({ data }: { data: MenuItemTypes[] }) {
   return (
     <>
       <header className="flex w-full items-center justify-center bg-secundary-900 p-2">
-        <div className="relative flex justify-center">
+        <div className="relative flex w-full justify-center">
           <SearchBar
             onClick={() => setQuery('')}
             query={query}
@@ -30,7 +30,7 @@ export default function ItemsLayout({ data }: { data: MenuItemTypes[] }) {
             placeholder={'Filtrar para editar'}
           />
           {query !== '' && (
-            <section className="absolute z-10 mt-12 flex w-96 flex-col items-center justify-center gap-2 rounded-lg bg-secundary-400 py-6">
+            <section className="absolute z-10 mt-12 flex w-96 flex-col items-center justify-center gap-2 rounded-lg bg-secundary-400 px-5 py-6 lg:px-0">
               {filteredData.length > 0 ? (
                 filteredData
                   .slice(0, 5)
