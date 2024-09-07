@@ -6,6 +6,7 @@ import { useMemo, useState } from 'react'
 import { categorys } from '@/libs/categorys'
 import Header from './Header'
 import { ItemsGroupTypes, ItemTypes } from '@/libs/types'
+import NavBarMobile from './NavBarMobile'
 
 const MAX_ITEMS_SEARCH = 8
 
@@ -45,6 +46,7 @@ export default function RenderItems({ data }: { data: ItemsGroupTypes[] }) {
   return (
     <div className="flex h-full w-full flex-col items-center justify-start">
       <Header query={query} setQuery={setQuery}></Header>
+      <NavBarMobile query={query} setQuery={setQuery}></NavBarMobile>
       <div className="grid grid-cols-2 items-center justify-center gap-2 py-5 lg:grid-cols-5">
         {categorys.map(({ name, image }) => (
           <CategoryTemplate

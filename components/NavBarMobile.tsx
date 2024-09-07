@@ -2,19 +2,15 @@ import Image from 'next/image'
 import SearchBar from './ui/SearchBar'
 import logo from '@/public/bar_logo.webp'
 import Link from 'next/link'
-
-type HeaderTypes = {
+type NavBarTypes = {
   query: string
   setQuery: (value: string) => void
 }
-
-export default function Header({ query, setQuery }: HeaderTypes) {
+export default function NavBarMobile({ query, setQuery }: NavBarTypes) {
   return (
-    <header className="relative hidden w-full justify-center bg-secundary-600 py-4 lg:flex">
-      <Link href={'/login'}>
-        <h2 className="absolute left-0 text-4xl text-primary-500 lg:left-10">
-          ChauGluten
-        </h2>
+    <header className="fixed bottom-0 z-10 flex w-full items-center justify-center bg-secundary-600 px-2 py-4 lg:hidden">
+      <Link className="px-3" href={'/login'}>
+        <Image src={logo} width={60} height={60} alt="Logo"></Image>
       </Link>
 
       <SearchBar
