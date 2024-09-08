@@ -5,7 +5,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'MenuBar',
+  title: 'Chau Gluten Menu',
   description: 'Encuentra de forma sencilla todo lo que tenemos para ofrecer',
 }
 

@@ -11,11 +11,11 @@ type HeaderTypes = {
 export default function Header({ query, setQuery }: HeaderTypes) {
   return (
     <header className="relative hidden w-full justify-center bg-secundary-600 py-4 lg:flex">
-      <Link href={'/login'}>
-        <h2 className="absolute left-0 text-4xl text-primary-500 lg:left-10">
-          ChauGluten
-        </h2>
-      </Link>
+      <div className="absolute left-10 top-0 flex h-full flex-row items-center justify-center">
+        <Link href={'/login'}>
+          <Image src={logo} height={50} width={50} alt="logo"></Image>
+        </Link>
+      </div>
 
       <SearchBar
         onClick={() => setQuery('')}
