@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import PasswordInput from './components/PasswordInput'
 
 export default function Login() {
@@ -13,12 +14,12 @@ export default function Login() {
           />
           <PasswordInput />
 
-          <button
-            type="submit"
-            className="rounded-lg bg-secundary-900 py-3 font-bold text-primary-900 hover:brightness-110"
+          <Link
+            href={'/admin'}
+            className="rounded-lg bg-secundary-900 py-3 text-center font-bold text-primary-900 hover:brightness-110"
           >
             Login
-          </button>
+          </Link>
         </form>
       </div>
     </>
